@@ -65,16 +65,16 @@ const scrapeTutorialBar = async () => {
   try {
     console.log("🛡️ جاري تشغيل المحرك الكاسر (النسخة النهائية المستقرة)...");
     
+    // ⚠️ تم تعديل الإعدادات هنا لتتوافق تماماً مع بيئة Hugging Face (Docker/Linux)
     browser = await puppeteer.launch({ 
-       headless: "new",
+       headless: true, // استخدام true بدلاً من "new" لضمان التوافق
        args: [
          '--no-sandbox', 
          '--disable-setuid-sandbox', 
-         '--disable-dev-shm-usage', // حل مشكلة الـ Timeout في Hugging Face
+         '--disable-dev-shm-usage', // حل مشكلة الـ Timeout والرامات في Hugging Face
          '--disable-gpu', 
-         '--no-zygote',
-         '--single-process', 
          '--disable-extensions'
+         // تم إزالة --single-process و --no-zygote لأنها تسبب Crash في السيرفر
        ]
     });
 
