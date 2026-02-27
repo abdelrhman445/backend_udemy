@@ -67,15 +67,14 @@ const scrapeTutorialBar = async () => {
     
     // ⚠️ تم تعديل الإعدادات هنا لتتوافق تماماً مع بيئة Hugging Face (Docker/Linux)
     // سطر 68 تقريباً
-browser = await puppeteer.launch({ 
-   headless: true, 
-   // ✅ التعديل ده بيخليه يدور على المتصفح في هيروكي ولو ملقهوش يشتغل عادي
-   executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || undefined, 
+browser = await puppeteer.launch({
+   headless: true,
+   executablePath: process.env.GOOGLE_CHROME_BIN,
    args: [
-      '--no-sandbox', 
-      '--disable-setuid-sandbox', 
-      '--disable-dev-shm-usage', // مهمة جداً عشان السيرفر ميهنجش
-      '--disable-gpu', 
+      '--no-sandbox',
+      '--disable-setuid-sandbox',
+      '--disable-dev-shm-usage',
+      '--disable-gpu',
    ]
 });
 
