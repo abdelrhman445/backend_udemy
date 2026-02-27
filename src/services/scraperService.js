@@ -68,8 +68,8 @@ const scrapeTutorialBar = async () => {
     // ⚠️ تم تعديل الإعدادات هنا لتتوافق تماماً مع بيئة Hugging Face (Docker/Linux)
     browser = await puppeteer.launch({ 
        headless: true, // استخدام true بدلاً من "new" لضمان التوافق
-      executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || null,
-      args: [
+       executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || undefined,
+       args: [
          '--no-sandbox', 
          '--disable-setuid-sandbox', 
          '--disable-dev-shm-usage', // حل مشكلة الـ Timeout والرامات في Hugging Face
