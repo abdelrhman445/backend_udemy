@@ -69,7 +69,6 @@ const scrapeTutorialBar = async () => {
     // سطر 68 تقريباً
 browser = await puppeteer.launch({
    headless: true,
-   executablePath: process.env.GOOGLE_CHROME_BIN,
    args: [
       '--no-sandbox',
       '--disable-setuid-sandbox',
