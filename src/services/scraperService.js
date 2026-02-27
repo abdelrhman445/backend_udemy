@@ -66,18 +66,18 @@ const scrapeTutorialBar = async () => {
     console.log("🛡️ جاري تشغيل المحرك الكاسر (النسخة النهائية المستقرة)...");
     
     // ⚠️ تم تعديل الإعدادات هنا لتتوافق تماماً مع بيئة Hugging Face (Docker/Linux)
-    browser = await puppeteer.launch({ 
-       headless: true, // استخدام true بدلاً من "new" لضمان التوافق
-       executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || undefined,
-       args: [
-         '--no-sandbox', 
-         '--disable-setuid-sandbox', 
-         '--disable-dev-shm-usage', // حل مشكلة الـ Timeout والرامات في Hugging Face
-         '--disable-gpu', 
-         '--disable-extensions'
-         // تم إزالة --single-process و --no-zygote لأنها تسبب Crash في السيرفر
-       ]
-    });
+    // سطر 68 تقريباً
+browser = await puppeteer.launch({ 
+   headless: true, 
+   // ✅ التعديل ده بيخليه يدور على المتصفح في هيروكي ولو ملقهوش يشتغل عادي
+   executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || undefined, 
+   args: [
+      '--no-sandbox', 
+      '--disable-setuid-sandbox', 
+      '--disable-dev-shm-usage', // مهمة جداً عشان السيرفر ميهنجش
+      '--disable-gpu', 
+   ]
+});
 
     const page = await browser.newPage();
     let allDiscoveredCourses = [];
